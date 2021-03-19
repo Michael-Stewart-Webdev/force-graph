@@ -567,14 +567,15 @@ export default Kapsule({
         // Update tooltip and trigger onHover events
 
         let obj = null;
-        if (!state.isPointerDragging) { // don't hover during drag
-          // Lookup object per pixel color
-          const pxScale = window.devicePixelRatio;
-          const px = (pointerPos.x > 0 && pointerPos.y > 0)
-            ? shadowCtx.getImageData(pointerPos.x * pxScale, pointerPos.y * pxScale, 1, 1)
-            : null;
-          px && (obj = state.colorTracker.lookup(px.data));
-        }
+        //if (!state.isPointerDragging) { // don't hover during drag
+        
+        // Lookup object per pixel color
+        const pxScale = window.devicePixelRatio;
+        const px = (pointerPos.x > 0 && pointerPos.y > 0)
+          ? shadowCtx.getImageData(pointerPos.x * pxScale, pointerPos.y * pxScale, 1, 1)
+          : null;
+        px && (obj = state.colorTracker.lookup(px.data));
+        //}
 
         if (obj !== state.hoverObj) {
           const prevObj = state.hoverObj;
